@@ -3,16 +3,11 @@ package com.dyablonskyi.cryptocurrencyapp.ui.coin.detail
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dyablonskyi.cryptocurrencyapp.common.Constants
 import com.dyablonskyi.cryptocurrencyapp.common.Resource
 import com.dyablonskyi.cryptocurrencyapp.domain.use_case.GetCoinDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

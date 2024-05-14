@@ -1,7 +1,6 @@
 package com.dyablonskyi.cryptocurrencyapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +17,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dyablonskyi.cryptocurrencyapp.ui.Screen
-import com.dyablonskyi.cryptocurrencyapp.ui.coin.detail.CoinDetailState
 import com.dyablonskyi.cryptocurrencyapp.ui.coin.detail.CoinDetailViewModel
 import com.dyablonskyi.cryptocurrencyapp.ui.coin.detail.components.CoinDetailScreen
 import com.dyablonskyi.cryptocurrencyapp.ui.coin.list.CoinListViewModel
@@ -76,10 +74,12 @@ fun CoinNavController(
         composable(
             route = Screen.CoinDetailScreen.routeWithArgs,
             arguments = Screen.CoinDetailScreen.arguments
-        ) {navBackStackEntry ->
+        ) { navBackStackEntry ->
             // To prevent unnecessary looping recomposition after GETing details of a coin
             LaunchedEffect(Unit) {
-                val coinId = navBackStackEntry.arguments?.getString(Screen.CoinDetailScreen.COIN_DETAIL_ARG) ?: ""
+                val coinId =
+                    navBackStackEntry.arguments?.getString(Screen.CoinDetailScreen.COIN_DETAIL_ARG)
+                        ?: ""
                 coinDetailViewModel.getCoin(coinId)
             }
             CoinDetailScreen(coinDetailState)
